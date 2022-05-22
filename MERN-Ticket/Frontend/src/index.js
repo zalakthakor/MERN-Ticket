@@ -7,10 +7,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
-import { reducers } from './reducers';
-// import { AuthProvider } from './Context/AuthProvider';
+import authReducer from './reducers/user';
 
-const store = createStore(reducers, compose(applyMiddleware(thunk)));
+const store = createStore(authReducer, compose(applyMiddleware(thunk)));
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
