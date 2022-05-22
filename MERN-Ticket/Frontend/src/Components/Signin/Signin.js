@@ -41,8 +41,6 @@ const SignInForm = (res) => {
      navigate("/home");
     } catch (error) {}
   ;
-  const googleError = () =>
-    alert("Google Sign In was unsuccessful. Try again later");
   const [user, setUser] = useState(initialValue);
   const { email, password } = user;
 
