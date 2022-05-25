@@ -17,7 +17,6 @@ app.use('/tickets',ticketRouter);
 
 const PORT = process.env.PORT|| 5000;
 const uri ="mongodb://localhost:27017/MERNTicket";
-
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => app.listen(PORT, () => console.log(`Server Running on Port: http://localhost:${PORT}`)))
   .catch((error) => console.log(`${error} did not connect`));
