@@ -4,7 +4,6 @@ import {
   getTickets,
   updateTicket,
   deleteTicket,
-  getTicketsByName,
   geticketById,
   
 } from "../controllers/tickets.js";
@@ -16,5 +15,5 @@ router.post("/",createTicket);
 router.patch("/:id",updateTicket);
 router.post("/delete/:id", deleteTicket);
 router.get("/:id",geticketById)
-router.get("/search", auth, getTicketsByName);
+
 export default router;
