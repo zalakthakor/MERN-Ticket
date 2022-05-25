@@ -88,18 +88,3 @@ export const geticketById = async(request,response)=>{
 }
 
 
-export const getTicketsByName = async (req, res) => {
-  const { searchQuery } = req.query;
-
-  try {
-    const title = new RegExp(searchQuery, "i");
-
-    const posts = await Ticket.find({
-      $or: [{ empname: new RegExp(".*" + searchQuery + ".*") }],
-    }).sort({ Date: -1 });
-
-    res.json(posts);
-  } catch (error) {
-    res.status(404).json({ message: error.message });
-  }
-};
