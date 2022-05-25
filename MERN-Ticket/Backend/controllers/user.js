@@ -10,18 +10,16 @@ export const signin = async (req, res) => {
 
   try {
     const oldUser = await UserModal.findOne({ email });
-
     if (!oldUser) return res.status(404).json({ message: "User doesn't exist" });
-
+    
     const isPswCorrect = await bcrypt.compare(password, oldUser.password);
-
     if (!isPswCorrect) return res.status(400).json({ message: "Invalid Password" });
     console.log(res.json)
     const token = jwt.sign({ email: oldUser.email, id: oldUser._id }, secret, { expiresIn: "2h" });
     res.status(200).json({ result: oldUser, token });
   } catch (err) {
     console.log(message)
-    res.status(500).json({ message: "Something went wrong" });
+    res.status(500).json({ message: "Something went wrong!" });
   }
 };
 
@@ -32,7 +30,7 @@ console.log("hello")
     const oldUser = await UserModal.findOne({ email });
     console.log(oldUser)
     
-    if (oldUser) return res.status(400).json({ message: "User already exists" });
+    if (oldUser) return res.status(400).json({ message: "User already available" });
 
     const hashedPassword = await bcrypt.hash(password, 12);
 
@@ -42,6 +40,6 @@ console.log("hello")
     console.log(result);
     res.status(201).json({ result, token });
   } catch (error) {
-    res.status(500).json({ message: "Something went wrong" });
+    res.status(500).json({ message: "Something went wrong!" });
     }
 };
